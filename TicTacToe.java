@@ -130,15 +130,15 @@ public class TicTacToe {
 
 		while (playAgain){
 			System.out.print("Enter Row: ");
-			row=(input.nextInt()) - 1;
+			row = (input.nextInt()) - 1;
 			System.out.print("Enter Column: ");
-			column=(input.nextInt())- 1;
+			column = (input.nextInt()) - 1;
 
-			while ((row<0 || row>2)){
+			while ((row < 0 || row > 2)){
 				System.out.print("Enter Valid Row: ");
 				row = (input.nextInt()) - 1;
 			}
-			while ((column<0 || column>2)){
+			while (column < 0 || column > 2){
 				System.out.print("Enter Valid Column: ");
 				column = (input.nextInt()) - 1;
 			}
@@ -152,7 +152,7 @@ public class TicTacToe {
 					System.out.print("Enter Valid Row: ");
 					row = (input.nextInt()) - 1;
 				}
-				System.out.println("Enter Column: ");
+				System.out.print("Enter Column: ");
 				column = (input.nextInt())- 1;
 				while ((column < 0 || column > 2)){
 					System.out.print("Enter Valid Column: ");
@@ -169,21 +169,20 @@ public class TicTacToe {
 			//restarts game if the game is won
 			if (rWin || cWin || dWin){
 				System.out.print("Play again Y/N: ");
-				again=input.next();			
-				if (again.equals("N")|| again.equals("n")){
+				again = input.next();			
+				if (again.equalsIgnoreCase("n")){
 					System.out.println("Thanks for playing! Goodbye!");
-					playAgain=false;
+					playAgain = false;
 					break;
 				}
-				else if (again.equals("Y") || again.equals("y")){
-					game1.changePlayer();
+				else if (again.equalsIgnoreCase("y")){
 					game1.emptyBoard();
 				}
 				else{
-					while (!again.equals("Y") || !again.equals("y") || !again.equals("N") || !again.equals("n")){
+					while (!again.equalsIgnoreCase("y") || !again.equalsIgnoreCase("n")){
 						System.out.println("INVALID");
 						System.out.print("Play again Y/N: ");
-						again=input.next();
+						again = input.next();
 					}
 				}
 			}
@@ -191,24 +190,25 @@ public class TicTacToe {
 			if (!rWin && !cWin && !dWin && (game1.fullBoard() == true)){
 				System.out.println("There is no winner :(");
 				System.out.print("Play again Y/N: ");
-				again=input.next();
+				again = input.next();
 				if (again.equalsIgnoreCase("n")){
 					System.out.println("Thanks for playing! Goodbye!");
-					playAgain=false;
+					playAgain = false;
 					break;
 				}
 				else if (again.equalsIgnoreCase("y")){
-					game1.changePlayer();
 					game1.emptyBoard();
 				}
 				else{
-					while (!again.equals("Y") || !again.equals("y") || !again.equals("N") || !again.equals("n")){
+					while (!again.equalsIgnoreCase("y") || !again.equalsIgnoreCase("n")){
 						System.out.println("INVALID");
 						System.out.print("Play again Y/N: ");
-						again=input.next();
+						again = input.next();
 					}
 				}
 			}
+			game1.changePlayer();
+
 		}
 	}
 }
